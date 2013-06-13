@@ -1,0 +1,18 @@
+id: Esz3mDjj
+name: 八中
+template:
+  - content: 你觉得老师的教学质量如何？
+    kind: SINGLE_CHOICE
+    options: 非常好|比较满意|不满意
+
+  - content: 你觉得老师的优点有哪些？
+    kind: MULTIPLE_CHOICE
+    options: 备课充分|讲课风格吸引人|知识点讲解透彻|其他
+
+  - content: 你的年龄__ 你的性别 __
+    kind: FILL
+    options:
+
+  - content: 对老师有什么建议？
+    kind: TEXT
+    options:

@@ -1,14 +1,9 @@
 class SimpleSurveyMigration < ActiveRecord::Migration
   def self.up
 
-    create_table :survey_templates do |t|
-      t.text :template # 模版文件内容解析后的格式
-      t.timestamps
-    end
-
     create_table :surveys do |t|
       t.string  :title
-      t.integer :survey_template_id
+      t.string :survey_template_id
       t.integer :creator_id
       t.timestamps
     end
@@ -31,7 +26,6 @@ class SimpleSurveyMigration < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :survey_templates
     drop_table :surveys
     drop_table :survey_results
     drop_table :survey_result_items
