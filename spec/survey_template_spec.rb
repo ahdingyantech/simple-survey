@@ -49,6 +49,7 @@ describe SimpleSurvey::SurveyTemplate do
           :creator => @user,
           :survey_template => @survey_template
         )
+        @survey = SimpleSurvey::Survey.find(@survey.id)
       }
 
       it{

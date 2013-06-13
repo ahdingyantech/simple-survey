@@ -4,13 +4,13 @@ module SimpleSurvey
 
     belongs_to :creator, :class_name => 'User'
 
-    validates :title, :creator, :presence => true
+    validates :title, :survey_template_id, :creator, :presence => true
 
     has_many :survey_results
     
     def survey_template=(survey_template)
       @survey_template = survey_template
-      survey_template_id = survey_template.id
+      self.survey_template_id = survey_template.id
     end
 
     def survey_template
