@@ -1,0 +1,2 @@
+module SimpleSurvey
+end
