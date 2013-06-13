@@ -6,5 +6,7 @@ module SimpleSurvey
     belongs_to :creator, :class_name => 'User'
 
     validates :title, :survey_template, :creator, :presence => true
+
+    has_many :survey_results
   end
 end
