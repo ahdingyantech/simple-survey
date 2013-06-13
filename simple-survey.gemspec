@@ -12,4 +12,7 @@ Gem::Specification.new do |s|
   s.licenses = 'MIT'
   s.files = Dir.glob("lib/**/*") + %w(README.md)
   s.require_paths = ['lib']
+
+  s.add_dependency('roo', '1.10.3')
+  s.add_dependency('iconv', '1.0.2')
 end

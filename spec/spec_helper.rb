@@ -5,6 +5,7 @@ Coveralls.wear!
 require 'mysql2'
 require 'active_record'
 require 'active_support/all'
+require 'action_dispatch/http/upload'
 require 'simple-survey'
 
 require 'config/db_init'
