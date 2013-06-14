@@ -75,9 +75,9 @@ module SimpleSurvey
       case self.kind
       when Kind::SINGLE_CHOICE, Kind::MULTIPLE_CHOICE
         self.answer_choice
-      when TEXT
+      when Kind::TEXT
         self.answer_text
-      when FILL
+      when Kind::FILL
         self.answer_fill
       end
     end

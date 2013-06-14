@@ -17,6 +17,45 @@ describe SimpleSurvey::SurveyResult do
     }
   end
 
+  context '提交一个不完整的结果' do
+    before{
+      @user_1 = User.create!(:name => 'user_1')
+
+      @survey_result = @survey.survey_results.build
+
+      survey_result_items_attributes = [
+        {
+          :kind        => SimpleSurvey::SurveyResultItem::Kind::SINGLE_CHOICE,
+          :item_number => '1'
+        },
+        {
+          :kind        => SimpleSurvey::SurveyResultItem::Kind::MULTIPLE_CHOICE,
+          :item_number => '2',
+          :answer      => ['A', 'B', 'D'],
+          :other       => '和善'
+        },
+        {
+          :kind        => SimpleSurvey::SurveyResultItem::Kind::FILL,
+          :item_number => '3',
+          :answer      => ['25', '男']
+        },
+        {
+          :kind        => SimpleSurvey::SurveyResultItem::Kind::TEXT,
+          :item_number => '4',
+          :answer      => '狂帅拽酷叼炸天'
+        }
+      ]
+
+      @survey_result.survey_result_items_attributes = survey_result_items_attributes
+      @survey_result.user = @user_1
+      @survey_result.save
+    }
+
+    it{
+      @survey_result.id.blank?.should == true
+    }
+  end
+
   context '提交一个调查表结果' do
     before{
       @user_1 = User.create!(:name => 'user_1')
