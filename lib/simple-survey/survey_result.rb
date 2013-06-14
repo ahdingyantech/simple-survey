@@ -8,7 +8,7 @@ module SimpleSurvey
     belongs_to :survey
     belongs_to :user
 
-    has_many :survey_result_items
+    has_many :survey_result_items, :dependent => :destroy
 
     accepts_nested_attributes_for :survey_result_items
 
