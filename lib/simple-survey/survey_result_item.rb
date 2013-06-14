@@ -38,11 +38,11 @@ module SimpleSurvey
     def set_answer_value
       case self.kind
       when Kind::SINGLE_CHOICE, Kind::MULTIPLE_CHOICE
-        self.answer_choice = @answer
+        self.answer_choice = @answer || ''
       when Kind::TEXT
-        self.answer_text = @answer
+        self.answer_text = @answer || ''
       when Kind::FILL
-        self.answer_fill = @answer
+        self.answer_fill = @answer || ''
       end
     end
 

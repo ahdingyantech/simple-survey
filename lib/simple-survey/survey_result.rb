@@ -3,6 +3,7 @@ module SimpleSurvey
     attr_accessible :survey, :user, :survey_result_items_attributes
 
     validates :survey, :user, :presence => true
+    validates  :survey_id,  :uniqueness => {:scope => :user_id}
 
     belongs_to :survey
     belongs_to :user
@@ -16,7 +17,7 @@ module SimpleSurvey
       count = self.survey_result_items.map(&:item_number).uniq.count
       must_count = self.survey.survey_template.template.count
       if count != must_count
-        errors.add(:survey_result_items, "参数错误")
+        errors.add(:survey_result_items, "请填写完整")
       end
     end
 
