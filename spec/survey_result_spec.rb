@@ -62,7 +62,7 @@ describe SimpleSurvey::SurveyResult do
 
       @survey_result = @survey.survey_results.build
 
-      survey_result_items_attributes = [
+      @survey_result_items_attributes = [
         {
           :kind        => SimpleSurvey::SurveyResultItem::Kind::SINGLE_CHOICE,
           :item_number => '1',
@@ -86,7 +86,7 @@ describe SimpleSurvey::SurveyResult do
         }
       ]
 
-      @survey_result.survey_result_items_attributes = survey_result_items_attributes
+      @survey_result.survey_result_items_attributes = @survey_result_items_attributes
       @survey_result.user = @user_1
       @survey_result.save!
       @survey_result = SimpleSurvey::SurveyResult.find(@survey_result.id)
@@ -122,5 +122,15 @@ describe SimpleSurvey::SurveyResult do
       item_4.kind.should == SimpleSurvey::SurveyResultItem::Kind::TEXT
       item_4.answer_text.should == '狂帅拽酷叼炸天' 
     end
+
+    context '重复提交' do
+      it{
+        survey_result = @survey.survey_results.build
+        survey_result.survey_result_items_attributes = @survey_result_items_attributes
+        survey_result.user = @user_1
+        survey_result.save.should == false
+      }
+    end
   end
+
 end

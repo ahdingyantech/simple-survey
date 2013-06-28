@@ -40,3 +40,10 @@ RSpec.configure do |config|
     MigrationHelper.down
   end
 end
+
+# 模拟使用 gem 时，打的猴子补丁
+module SimpleSurvey
+  class SurveyResult
+    validates  :survey_id,  :uniqueness => {:scope => :user_id}
+  end
+end

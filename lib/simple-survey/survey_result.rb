@@ -3,7 +3,6 @@ module SimpleSurvey
     attr_accessible :survey, :user, :survey_result_items_attributes
 
     validates :survey, :user, :presence => true
-    validates  :survey_id,  :uniqueness => {:scope => :user_id}
 
     belongs_to :survey
     belongs_to :user
